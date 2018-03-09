@@ -1,0 +1,110 @@
+<form>
+    <h2>Discrepancy Management</h2>
+
+    <div>
+        <h3>Available files for discrepancy report</h3>
+
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading> 
+
+        <div class="center-body form-group">
+            <div class="row row-header">
+                <div class="col-sm-4">
+                    <h4>File Type</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4> File Name</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4>Date Of Upload</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="center-body form-group" *ngFor="let item of uploadedFiles; let i = index;">
+        <div class="row">
+            <div class="col-sm-4">
+                <label>{{item.FileType}}</label>
+            </div>
+            <div class="col-sm-4">
+                <label><a (click)="onClickLink(item.FileName)">{{item.FileName}}</a></label>
+            </div>
+            <div class="col-sm-4">
+                <label>{{item.FileDate | date:'mediumDate'}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="seperator">
+            
+    </div>
+    <div>
+        <h3>Upload data for discrepancy report</h3>
+        <div class="center-body form-group" *ngFor="let item of files; let i = index;">
+            <div class="row">
+                <div class="col-sm-5">
+                    <label>File Type</label>
+                </div>
+                <div class="col-sm-5">
+                    <label>File Path</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <select class="form-control" [(ngModel)]="item.fileType" name="fileType{{i}}">
+                        <option *ngFor="let type of types;" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+                <div class="col-sm-5">
+                    <input class="form-control" [disabled]="true" [(ngModel)]="item.fileName" name="fileName{{i}}" type="text">
+                </div>
+
+                <div class="fileUpload btn btn-primary">
+                    <span>Upload</span>
+                    <input type="file" accept=".csv,.xls,.xlsx" id="btnUpload" value="Upload" (click)="fileChange($event,i)" class="upload"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="seperator">
+            
+    </div>
+    <div>
+        <h3>Generate discrepancy report</h3>
+        <div class="form-group form-custom">
+
+            <div class="row row-header">
+                <div class="col-sm-3">
+                    <h4>Start Date</h4>
+                </div>
+                <div class="col-sm-3">
+                    <h4>End Date</h4>
+                </div>
+            </div>
+
+
+            <div class="row row-custom">
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" placeholder="start date" ([ngModel])="startDate" (change)="startDateChange($event)"
+                        name="startDate" />
+                </div>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" placeholder="end date" ([ngModel])="endDate" (change)="endDateChange($event)" name="endDate"
+                    />
+                </div>
+                <div class="col-sm-3">
+                    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" name="selectLocations" class="form-control" [settings]="dropdownSettings"
+                        (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" [selectedItems]="selectedItems"
+                        (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="btn btn-success btn-custom" value="Submit" (click)="submitAction()" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

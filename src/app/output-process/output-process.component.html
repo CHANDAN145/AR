@@ -1,0 +1,42 @@
+<form>
+    <h2>Discrepancy Report</h2>
+    <div class="center-body form-group" >
+      <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+        <input type="text" class="form-control" [(ngModel)]="searchText" name="searhName" placeholder="Search discripancies" *ngIf="isSearchBarVisible" />   
+      </div>
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" class="form-control checkbox-custom" (change)="CheckAll()"/></th>
+                <th>Ntpl ID</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Discrepancy</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <ngx-loading [show]="reportLoading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+            
+            <tbody>
+              <tr *ngFor="let item of discrepancies | discripancyFilter: searchText  | paginate: { itemsPerPage: 5, currentPage: p }; let i = index;">
+                <td ><input type="checkbox"    [(checked)] ="item.isChecked"  (change)="onCheck(i)"/></td>
+                <td class="col-md-1 col-lg-1 col-sm-1 col-xs-1" >{{item.NTPL_ID}}</td>
+                <td class="col-md-3 col-lg-3 col-sm-3 col-xs-3" >{{item.Name}}</td>
+                <td class="col-md-2 col-lg-2 col-sm-2 col-xs-2" >{{item.TaskName}}</td>
+                <td class="col-md-4 col-lg-4 col-sm-4 col-xs-4" >{{item.Body}}</td>
+                <td class="col-md-2 col-lg-2 col-sm-2 col-xs-2" >{{item.Date}}</td>
+              </tr>
+              </tbody>
+          </table>
+
+         <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls> 
+
+         <div class="row">
+              <a *ngIf="displayLink" (click)="onClickLink()">{{link}}</a>
+              
+              <input type="button" class="btn btn-success btn-custom" value="Send" (click)="submitAction(p)"/>
+          </div>
+    </div>
+    
+  </form>

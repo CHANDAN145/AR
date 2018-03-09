@@ -1,0 +1,32 @@
+.center-body
+{
+   width: 100%;
+   padding-left: 5em;
+   padding-right:5em;
+}
+
+h2
+{
+    text-align: center;
+    padding-bottom: 30px;
+    vertical-align: top;
+    padding-top: 30px;
+}
+
+.btn-custom
+{
+    float: right;
+}
+
+.pagination
+{
+    position: absolute;
+    left: 50%;
+    margin-top: 0px;
+    transform: translate(-50%, -50%);
+}
+
+a:hover 
+{
+    cursor:pointer;
+}

@@ -4,5 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endpoints: {
+    managementApi: 'http://192.168.160.31:8082/ARS-WebAPI/api/',
+  }
 };

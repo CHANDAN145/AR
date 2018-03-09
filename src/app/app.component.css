@@ -1,0 +1,105 @@
+.container-body {
+    min-height: 100%;  /* Fallback for vh unit */
+    min-height: 100vh; /* You might also want to use
+                            'height' property instead.
+                            
+                            Note that for percentage values of
+                            'height' or 'min-height' properties,
+                            the 'height' of the parent element
+                            should be specified explicitly.
+    
+                            In this case the parent of '.vertical-center'
+                            is the <body> element */
+    
+    /* Make it a flex container */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; 
+    
+    /* Align the bootstrap's container vertically */
+        -webkit-box-align : center;
+    -webkit-align-items : center;
+            -moz-box-align : center;
+            -ms-flex-align : center;
+            align-items : center;
+    
+    /* In legacy web browsers such as Firefox 9
+        we need to specify the width of the flex container */
+    width: 100%;
+    
+    /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+        hence the bootstrap's container won't be aligned to the center anymore.
+    
+        Therefore, we should use the following declarations to get it centered again */
+            -webkit-box-pack : center;
+                -moz-box-pack : center;
+                -ms-flex-pack : center;
+    -webkit-justify-content : center;
+            justify-content : center;
+            
+}
+
+.container-content
+{
+    background-color:#FFFFFF ; 
+    width:70% ;
+    height: 70%;
+}
+
+.container-link
+{
+    background-color:#FFFFFF ; 
+    width:30% ;
+    height: 30%;   
+}
+
+.extra-padding 
+{
+    padding-top: 10px;
+}
+
+a:hover {
+    cursor:pointer;
+   }
+
+.fixed-nav {
+    position: fixed !important;
+    width: 100%;
+    opacity: 1 !important;
+    background-color:  #039BE5;
+    color: white !important;
+}
+
+.manager-border {
+    border-style: solid;
+    border-width: thick;
+    border-color: #039BE5;
+    border-radius: 10px;
+}
+
+.app-manager {
+    margin-top: 80px;
+}
+
+.navbar-nav>.active>a:hover {
+    color: antiquewhite;
+    background-color: #33A7DF;
+}
+
+.navbar{
+    background-color: #039BE5;
+    color: white;
+}
+
+.color-white {
+    color: white;
+}
+
+.navbar-default li>a {
+    color: white;
+}
+.navbar-default li>a:hover {
+    color: #777;
+}
