@@ -109,17 +109,8 @@ export class ManagerComponent implements OnInit {
   }
 
   add() {
-   /* const length = this.files.length;
-    const file = this.files[length - 1];
-    const fileType = file.fileType;
-    const typeIndex = this.types.indexOf(fileType);*/
-    //this.files[length].types = this.types.splice(typeIndex, 1);
     this.files.push(new FileDetail());
     console.log('added');
-  }
-
-  onItemSelect() {
-
   }
 
   onSubmitResponse(discrepancyList){
@@ -169,15 +160,10 @@ onClickLink(link:string): void {
     var data = response.text();
     var blob = new Blob();
     var contentType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-  
-   // if(filename.endsWith("csv"))
-   // blob = new Blob([data], {type: 'text/csv'});
-  //else
+
      var x : any;
      x=response.blob();
-   //blob = new Blob([x], { type: contentType });  
      var filename = link;
-   // FileSaver.saveAs(blob, filename);
    FileSaver.saveAs(x, filename);    
   });
 }

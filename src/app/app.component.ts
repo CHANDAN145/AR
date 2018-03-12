@@ -27,34 +27,27 @@ export class AppComponent implements OnInit {
     this.csvFileLinks = new Array<string>();
     this.links = links;
     this.links.forEach(link => {
-     let item = link.split("/");
+     let item = link.split("\\");
       link =item[item.length - 1];
       if(link.includes('.csv'))
         this.csvFileLinks.push(link);
     });
     if(this.csvFileLinks.length > 5)
-      this.csvFileLinks.splice(5,this.csvFileLinks.length - 5); 
+     this.csvFileLinks =  this.csvFileLinks.splice(this.csvFileLinks.length - 5,5); 
     console.log(this.csvFileLinks);
-    
   }
 
   onLink(index) {
-    //this.csvFileLinks[index]
     this.service.getFile(this.csvFileLinks[index]).subscribe(response => {
       console.log(response);
       var data = response.text();
       var filename = this.csvFileLinks[index];
-      var blob = new Blob();
       var contentType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
-      if(filename.endsWith("csv"))
-        blob = new Blob([data], {type: 'text/csv'});
-      else
-      debugger 
-       blob = new Blob([response.arrayBuffer()], { type: contentType });
-       // blob = new Blob([(<any>response)._body], { type: contentType });
+      var x : any;
+      x=response.blob();
       
-      FileSaver.saveAs(blob, filename);  
+    FileSaver.saveAs(x, filename);  
       
     });
     console.log(this.csvFileLinks[index]);

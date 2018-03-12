@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   endpoints: {
-    managementApi: 'http://192.168.160.31:8082/ARS-WebAPI/api/',
+    managementApi: 'http://192.168.160.31:8082/api/',
   }
 };

@@ -23,4 +23,5 @@
     IsinTBS: boolean;
     Email: string;
     isChecked = false;
+    id: number;
   }

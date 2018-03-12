@@ -20,7 +20,7 @@
             
             <tbody>
               <tr *ngFor="let item of discrepancies | discripancyFilter: searchText  | paginate: { itemsPerPage: 5, currentPage: p }; let i = index;">
-                <td ><input type="checkbox"    [(checked)] ="item.isChecked"  (change)="onCheck(i)"/></td>
+                <td ><input type="checkbox"    [(checked)] ="item.isChecked"  (change)="onCheck(item)"/></td>
                 <td class="col-md-1 col-lg-1 col-sm-1 col-xs-1" >{{item.NTPL_ID}}</td>
                 <td class="col-md-3 col-lg-3 col-sm-3 col-xs-3" >{{item.Name}}</td>
                 <td class="col-md-2 col-lg-2 col-sm-2 col-xs-2" >{{item.TaskName}}</td>
